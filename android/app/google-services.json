@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "963175517346",
+    "project_id": "clone-d449a",
+    "storage_bucket": "clone-d449a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963175517346:android:4073dcb6146ce71d6e5bfb",
+        "android_client_info": {
+          "package_name": "com.tanmay.a_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963175517346-m10khka8hbvl6p4lvnlr96nudfknpi7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDULNee5Sq9XsLuAN9O5bXoAPkcSjU92_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963175517346-m10khka8hbvl6p4lvnlr96nudfknpi7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963175517346:android:6aacb7d661ae3cca6e5bfb",
+        "android_client_info": {
+          "package_name": "com.tanmay.amazon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963175517346-m10khka8hbvl6p4lvnlr96nudfknpi7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDULNee5Sq9XsLuAN9O5bXoAPkcSjU92_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963175517346-m10khka8hbvl6p4lvnlr96nudfknpi7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
