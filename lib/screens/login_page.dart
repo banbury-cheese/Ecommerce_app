@@ -1,5 +1,5 @@
 import 'package:a_commerce/screens/register_page.dart';
-import 'package:a_commerce/widgets/custom__input.dart';
+import 'package:a_commerce/widgets/custom_input.dart';
 import 'package:a_commerce/widgets/custom_btn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
