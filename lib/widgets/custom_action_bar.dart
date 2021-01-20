@@ -1,4 +1,8 @@
 import 'package:a_commerce/constants.dart';
+import 'package:a_commerce/screens/cart_page.dart';
+import 'package:a_commerce/services/firebase_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class CustomActionBar extends StatelessWidget {
@@ -10,6 +14,11 @@ class CustomActionBar extends StatelessWidget {
   CustomActionBar(
       {this.title, this.hasBackArrrow, this.hasTitle, this.hasBackground});
 
+  FirebaseServices _firebaseServices = FirebaseServices();
+
+  final CollectionReference _usersRef =
+  FirebaseFirestore.instance.collection("Users");
+
   @override
   Widget build(BuildContext context) {
     bool _hasBackArrow = hasBackArrrow ?? false;
@@ -20,13 +29,13 @@ class CustomActionBar extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: _hasBackground
               ? LinearGradient(
-                  colors: [
-                    Colors.white,
-                    Colors.white.withOpacity(0),
-                  ],
-                  begin: Alignment(0, 0),
-                  end: Alignment(0, 1),
-                )
+            colors: [
+              Colors.white,
+              Colors.white.withOpacity(0),
+            ],
+            begin: Alignment(0, 0),
+            end: Alignment(0, 1),
+          )
               : null),
       padding: EdgeInsets.only(
         top: 56.0,
@@ -39,44 +48,68 @@ class CustomActionBar extends StatelessWidget {
         children: [
           if (_hasBackArrow)
             GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Container(
-                width: 42,
-                height: 42,
+                width: 42.0,
+                height: 42.0,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
                   color: Colors.black,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
+                alignment: Alignment.center,
                 child: Image(
-                  width: 16,
-                  height: 16,
-                  color: Colors.white,
                   image: AssetImage("assets/images/back_arrow.png"),
+                  color: Colors.white,
+                  width: 16.0,
+                  height: 16.0,
                 ),
               ),
             ),
           if (_hasTitle)
             Text(
-              title ?? "actionBar",
+              title ?? "Action Bar",
               style: Constants.boldHeading,
             ),
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(),
+                  ));
+            },
             child: Container(
-              width: 42,
-              height: 42,
+              width: 42.0,
+              height: 42.0,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
                 color: Colors.black,
+                borderRadius: BorderRadius.circular(8.0),
               ),
               alignment: Alignment.center,
-              child: Text(
-                "0",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+              child: StreamBuilder(
+                stream: _usersRef
+                    .doc(_firebaseServices.getUserId())
+                    .collection("Cart")
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  int _totalItems = 0;
+
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    List _documents = snapshot.data.docs;
+                    _totalItems = _documents.length;
+                  }
+
+                  return Text(
+                    "$_totalItems" ?? "0",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  );
+                },
               ),
             ),
           ),
