@@ -31,6 +31,7 @@ class ProductCard extends StatelessWidget {
           children: [
             Container(
               height: 350.0,
+              width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
                 child: Image.network(

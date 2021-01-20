@@ -132,9 +132,6 @@ class _CartPageState extends State<CartPage> {
                           }
 
                           return Container(
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
                           );
                         },
                       ),

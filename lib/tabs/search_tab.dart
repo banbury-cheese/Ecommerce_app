@@ -33,7 +33,7 @@ class _SearchTabState extends State<SearchTab> {
               future: _firebaseServices.productsRef
                   .orderBy("search_string")
                   .startAt([_searchString]).endAt(
-                  ["$_searchString\uf8ff"]).get(),
+                      ["$_searchString\uf8ff"]).get(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Scaffold(

@@ -128,9 +128,7 @@ class SavedTab extends StatelessWidget {
                           }
 
                           return Container(
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
+
                           );
                         },
                       ),
